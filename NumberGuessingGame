@@ -2,7 +2,10 @@ import java.util.*;
 public class Something {
 
     public static void main(String[] args){
-        outsideStuff(1000);
+        Scanner Scan = new Scanner(System.in);
+        System.out.println("what number do you want to go to?");
+        int topNum = Scan.nextInt();
+        outsideStuff(topNum);
     }
     public static void outsideStuff(int topNum){
         Random rand = new Random();
