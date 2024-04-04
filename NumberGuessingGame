@@ -1,0 +1,63 @@
+import java.util.*;
+public class NumberGuessingGame {
+
+    public static void main(String[] args){
+        outsideStuff(1000);
+    }
+    public static void outsideStuff(int topNum){
+        Random rand = new Random();
+        boolean going = true;
+        Scanner Scan = new Scanner(System.in);
+        int bestguess = 10000000;
+        int fullGuess = 0; //final guess number
+        int games = 0; //amount of games
+        while (going){
+            games++;
+            int x = rand.nextInt(topNum);
+            int guesses = game(x);
+            if (guesses < bestguess){
+                bestguess = guesses;
+            }
+            fullGuess += guesses;
+            System.out.println("you wanna keep going (1 == yes, 2 == no)");
+            String stop = Scan.nextLine();
+            boolean done = false;
+            while (!done){
+                if (stop.equals("1")){
+                    done = true;
+                }
+                else if (stop.equals("2")){
+                    done = true;
+                    going = false;
+                }
+            }
+        }
+        results(bestguess, fullGuess, games);
+    }
+    //runs one game
+    public static int game(int num){
+        Scanner Scan = new Scanner(System.in);
+        System.out.println("say your answer.");
+        int guesses = 0;
+        while (true){
+            System.out.println(num);
+            int ans = Scan.nextInt();
+            guesses++;
+            if (ans > num){
+                System.out.println("Too high");
+            }
+            else if (ans < num){
+                System.out.println("Too low");
+            }
+            else{
+                System.out.print("You got it ");
+                break;
+            }
+        }
+        return guesses;
+    }
+    public static void results(int bestguess, int guesses, int games){
+        double guessPerGame = (double) guesses/games;
+        System.out.printf("your guesses: %d%nyour games: %d%nguesses/game: %.2f%nbest guesses: %d%n", guesses, games, guessPerGame, bestguess);
+    }
+}
