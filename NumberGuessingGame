@@ -43,7 +43,6 @@ public class Something {
         System.out.println("say your answer."); 
         int guesses = 0; //sets guesses
         while (true){
-            System.out.println(num);
             int ans = Scan.nextInt();
             guesses++; //adds to it for each loop 
             if (ans > num){ // if too high
